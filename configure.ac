@@ -1,0 +1,7 @@
+AC_INIT([DevOpsLab3], [1.0], [barmalyy@gmail.com])
+AM_INIT_AUTOMAKE
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
