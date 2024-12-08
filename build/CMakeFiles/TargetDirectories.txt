@@ -1,0 +1,4 @@
+/home/andrey/DevOpsLab3/build/CMakeFiles/func.dir
+/home/andrey/DevOpsLab3/build/CMakeFiles/test_func.dir
+/home/andrey/DevOpsLab3/build/CMakeFiles/edit_cache.dir
+/home/andrey/DevOpsLab3/build/CMakeFiles/rebuild_cache.dir

@@ -652,7 +652,8 @@ S["ECHO_T"]=""
 S["ECHO_N"]="-n"
 S["ECHO_C"]=""
 S["DEFS"]="-DPACKAGE_NAME=\\\"DevOpsLab3\\\" -DPACKAGE_TARNAME=\\\"devopslab3\\\" -DPACKAGE_VERSION=\\\"1.0\\\" -DPACKAGE_STRING=\\\"DevOpsLab3\\ 1.0\\\" -DPACKAGE_BUGREPORT=\\\""\
-"barmalyy@gmail.com\\\" -DPACKAGE_URL=\\\"\\\" -DPACKAGE=\\\"devopslab3\\\" -DVERSION=\\\"1.0\\\""
+"barmalyy@gmail.com\\\" -DPACKAGE_URL=\\\"\\\" -DPACKAGE=\\\"devopslab3\\\" -DVERSION=\\\"1.0\\\" -DHAVE_STDIO_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_INTTY"\
+"PES_H=1 -DHAVE_STDINT_H=1 -DHAVE_STRINGS_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_UNISTD_H=1 -DSTDC_HEADERS=1"
 S["mandir"]="${datarootdir}/man"
 S["localedir"]="${datarootdir}/locale"
 S["libdir"]="${exec_prefix}/lib"
