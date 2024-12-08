@@ -1,0 +1,5 @@
+Package: func
+Version: 1.0
+Architecture: any
+Maintainer: barmalyy@gmail.com
+Description: This code calculating the value of the hyperbolic cosine ch(x) for a given number of terms of the series.
