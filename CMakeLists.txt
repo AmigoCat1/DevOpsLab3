@@ -1,6 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
-project(program VERSION 1.0)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/heads/main.zip
 
-add_executable(${func} main.cpp func.cpp)
+)
+FetchContent_MakeAvailable(googletest)
+enable_testing()
+add_executable(test_func test_func.cpp func.cpp)
+target_link_libraries(test_func gtest gtest_main)
+add_test(NAME test_func COMMAND test_func)
