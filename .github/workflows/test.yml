@@ -1,0 +1,32 @@
+name: Unit Test
+
+on:
+  push:
+    branches: [branchAutoTest]
+  pull_request:
+    branches: [branchAutoTest]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y autoconf automake g++ libgtest-dev cmake
+
+      - name: Generate configuration and build
+        run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake ..
+          make
+
+      - name: Run test
+        run: |
+          cd build
+          ./test_func
