@@ -1,12 +1,12 @@
-
 AUTOMAKE_OPTIONS = foreign
 
-TESTS = UnitTest.cpp
 bin_PROGRAMS = FuncCosh
+FuncCosh_SOURCES = main.cpp FuncCosh.cpp calculateTime.cpp HTTPserver.cpp
+
 lib_LTLIBRARIES = libFuncCosh.la
-FuncCosh_SOURCES = FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h HTTPserver.cpp
+libFuncCosh_la_SOURCES = FuncCosh.cpp calculateTime.cpp
 
 check_PROGRAMS = UnitTest
+UnitTest_SOURCES = UnitTest.cpp FuncCosh.cpp calculateTime.cpp HTTPserver.cpp
 
-UnitTest_SOURCES = UnitTest.cpp FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h
 EXTRA_DIST = Makefile.am

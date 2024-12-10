@@ -6,7 +6,7 @@ int CreateHTTPserver();
 int main() {
 	FuncCosh func;
         double x;
-        int n;
+        int terms;
 	// Input x and terms
 	std::cout << "Enter the value of x: ";
 	std::cin >> x;

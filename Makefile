@@ -140,8 +140,8 @@ AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_FuncCosh_OBJECTS = FuncCosh.$(OBJEXT) calculateTime.$(OBJEXT) \
-	HTTPserver.$(OBJEXT)
+am_FuncCosh_OBJECTS = main.$(OBJEXT) FuncCosh.$(OBJEXT) \
+	calculateTime.$(OBJEXT) HTTPserver.$(OBJEXT)
 FuncCosh_OBJECTS = $(am_FuncCosh_OBJECTS)
 FuncCosh_LDADD = $(LDADD)
 am_UnitTest_OBJECTS = UnitTest.$(OBJEXT) FuncCosh.$(OBJEXT) \
@@ -165,7 +165,8 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/FuncCosh.Po \
 	./$(DEPDIR)/HTTPserver.Po ./$(DEPDIR)/UnitTest.Po \
-	./$(DEPDIR)/calculateTime.Po ./$(DEPDIR)/libFuncCosh.Plo
+	./$(DEPDIR)/calculateTime.Po ./$(DEPDIR)/libFuncCosh.Plo \
+	./$(DEPDIR)/main.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -552,7 +553,7 @@ top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
 TESTS = UnitTest.cpp
 lib_LTLIBRARIES = libFuncCosh.la
-FuncCosh_SOURCES = FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h HTTPserver.cpp
+FuncCosh_SOURCES = main.cpp FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h HTTPserver.cpp
 UnitTest_SOURCES = UnitTest.cpp FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h
 EXTRA_DIST = Makefile.am
 all: all-am
@@ -708,6 +709,7 @@ include ./$(DEPDIR)/HTTPserver.Po # am--include-marker
 include ./$(DEPDIR)/UnitTest.Po # am--include-marker
 include ./$(DEPDIR)/calculateTime.Po # am--include-marker
 include ./$(DEPDIR)/libFuncCosh.Plo # am--include-marker
+include ./$(DEPDIR)/main.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1217,6 +1219,7 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/UnitTest.Po
 	-rm -f ./$(DEPDIR)/calculateTime.Po
 	-rm -f ./$(DEPDIR)/libFuncCosh.Plo
+	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -1269,6 +1272,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/UnitTest.Po
 	-rm -f ./$(DEPDIR)/calculateTime.Po
 	-rm -f ./$(DEPDIR)/libFuncCosh.Plo
+	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
