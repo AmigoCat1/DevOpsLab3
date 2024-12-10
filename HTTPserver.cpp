@@ -11,7 +11,8 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-#include "func.h"
+#include "calculateTime.h"
+#include "FuncCosh.h"
 #include <vector>
 #include <random>
 #include <chrono>

@@ -1,13 +1,12 @@
-PACKAGE = func
-VERSION = 1.0
-PACKAGE_BUGREPORT = barmalyy@gmail.com
 
-AUTOMAKE_OPTIONS = foreign subdir-objects
+AUTOMAKE_OPTIONS = foreign
 
-TESTS = test_func.cpp
-bin_PROGRAMS = func
-func_SOURCES = main.cpp func.cpp
+TESTS = UnitTest.cpp
+bin_PROGRAMS = FuncCosh
+lib_LTLIBRARIES = libFuncCosh.la
+FuncCosh_SOURCES = FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h HTTPserver.cpp
 
-check_PROGRAMS = test_func
+check_PROGRAMS = UnitTest
 
-test_func_SOURCES = test_func.cpp func.cpp
+UnitTest_SOURCES = UnitTest.cpp FuncCosh.cpp FuncCosh.h calculateTime.cpp calculateTime.h
+EXTRA_DIST = Makefile.am
