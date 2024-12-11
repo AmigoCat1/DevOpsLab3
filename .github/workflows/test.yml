@@ -34,7 +34,7 @@ jobs:
           
       - name: Log in Dockerhub.com
         run: |
-          docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
           
       - name: Build docker iamges
         run: |
