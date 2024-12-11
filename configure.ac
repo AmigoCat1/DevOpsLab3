@@ -1,6 +1,8 @@
 AC_INIT([DevOpsLab3], [1.0], [barmalyy@gmail.com])
 LT_INIT
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AC_CONFIG_MACRO_DIRS([m4])
+ACLOCAL_AMFLAGS = -I m4
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
