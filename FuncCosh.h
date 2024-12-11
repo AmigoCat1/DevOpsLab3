@@ -4,7 +4,7 @@
 class FuncCosh {
 public: 
     double calculate(double x, int terms);
-    unsigned long long factorial(int n);
+    unsigned long long calculateFactorial(int n);
 };
 
 #endif

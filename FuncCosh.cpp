@@ -2,21 +2,24 @@
 #include <cmath>
 #include <stdexcept>
 
-unsigned long long FuncCosh::factorial(int n) {
-    unsigned long long result = 1;
-    if (n > 20) { // Adjust the limit as needed
-        throw std::runtime_error("Factorial overflow"); 
+unsigned long long FuncCosh::calculateFactorial(int n) {
+    if (n > 20) { // Factorial overflow limit
+        throw std::runtime_error("Factorial overflow detected");
     }
+
+    unsigned long long result = 1;
     for (int i = 1; i <= n; ++i) {
         result *= i;
     }
+
     return result;
 }
 
 double FuncCosh::calculate(double x, int terms) {
-    double sum = 0.0;
-    for (int n = 0; n < terms; ++n) {
-        sum += std::pow(x, 2 * n) / factorial(2 * n);
+    double sum = 1.0;  // Start from the first term cosh(0) = 1
+    for (int n = 1; n < terms; ++n) {
+        sum += std::pow(x, 2 * n) / calculateFactorial(2 * n);
     }
     return sum;
 }
+

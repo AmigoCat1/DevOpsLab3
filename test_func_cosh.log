@@ -1,5 +1,6 @@
-cosh(0) calculated value: 1
-cosh(1) calculated value: 1.54308
-Calculation and sorting time: 19688 milliseconds
-All tests complete
-PASS test_func_cosh (exit status: 0)
+Cosh(0) computed value: 1
+Cosh(1) computed value: 1.54308
+Cosh(-1) computed value: 1.54308
+Total computation time: 20287 ms
+test_func_cosh: UnitTest.cpp:32: void testExecutionTime(): Assertion `elapsedTime >= 5000 && elapsedTime <= 20000' failed.
+FAIL test_func_cosh (exit status: 134)
