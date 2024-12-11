@@ -187,7 +187,11 @@ void sendGETresponse(int fdSocket, char strFilePath[], char strResponse[])
     {
         perror("Error opening file");
         sprintf(strResponse, "%s%s", HTTP_404HEADER, "Content-Type: text/plain\r\n\r\nFile not found");
-        write(fdSocket, strResponse, strlen(strResponse));
+        ssize_t bytes_written = write(fdSocket, strResponse, strlen(strResponse));
+        if (bytes_written == -1)
+        {
+            perror("Error writing response to client socket");
+        }
         return;
     }
 
@@ -198,13 +202,24 @@ void sendGETresponse(int fdSocket, char strFilePath[], char strResponse[])
 
     sprintf(strResponse + strlen(strResponse), "Content-Length: %d\r\n\r\n", file_total_size);
 
-    write(fdSocket, strResponse, strlen(strResponse));
+    ssize_t bytes_written = write(fdSocket, strResponse, strlen(strResponse));
+    if (bytes_written == -1)
+    {
+        perror("Error writing response header to client socket");
+        close(fdFile);
+        return;
+    }
 
     while (file_total_size > 0)
     {
         int iToSend = (file_total_size < block_size) ? file_total_size : block_size;
-        sendfile(fdSocket, fdFile, NULL, iToSend);
-        file_total_size -= iToSend;
+        ssize_t sent = sendfile(fdSocket, fdFile, NULL, iToSend);
+        if (sent == -1)
+        {
+            perror("Error sending file data to client");
+            break;
+        }
+        file_total_size -= sent;
     }
 
     close(fdFile);
@@ -216,12 +231,28 @@ void sendPUTresponse(int fdSocket, char strFilePath[], char strBody[], char strR
     if (fdFile < 0)
     {
         sprintf(strResponse, "%s", HTTP_400HEADER);
-        write(fdSocket, strResponse, strlen(strResponse));
+        ssize_t bytes_written = write(fdSocket, strResponse, strlen(strResponse));
+        if (bytes_written == -1)
+        {
+            perror("Error writing response to client socket");
+        }
         return;
     }
 
-    write(fdSocket, strResponse, strlen(strResponse));
-    write(fdFile, strBody, strlen(strBody));
+    ssize_t bytes_written = write(fdSocket, strResponse, strlen(strResponse));
+    if (bytes_written == -1)
+    {
+        perror("Error writing response header to client socket");
+        close(fdFile);
+        return;
+    }
+
+    bytes_written = write(fdFile, strBody, strlen(strBody));
+    if (bytes_written == -1)
+    {
+        perror("Error writing body to file");
+    }
+
     close(fdFile);
 }
 

@@ -1,5 +1,5 @@
 cosh(0) calculated value: 1
 cosh(1) calculated value: 1.54308
-Calculation and sorting time: 19863 milliseconds
+Calculation and sorting time: 19688 milliseconds
 All tests complete
 PASS test_func_cosh (exit status: 0)
