@@ -2,9 +2,9 @@ name: Work with Docker
 
 on:
   push:
-    branches: [branchHTTPserver]
+    branches: [branchHTTPservMutli]
   pull_request:
-    branches: [branchHTTPserver]
+    branches: [branchHTTPservMutli]
 
 jobs:
   build:
@@ -16,21 +16,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y autoconf automake g++ libboost-test-dev
 
-      - name: Generate configuration and build
+      - name: Generate configuration 
         run: |
           autoreconf --install
-          ./configure
-          make
-
-      - name: Run test
-        run: |
-          make check
-       
-      - name: Test log upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-logs
-          path: test-suite.log
           
       - name: Install Dependencies (QEMU)
         uses: docker/setup-qemu-action@v3

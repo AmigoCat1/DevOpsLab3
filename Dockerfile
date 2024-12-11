@@ -1,17 +1,13 @@
-FROM ubuntu:latest
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    g++ \
-    autoconf \
-    automake \
-    libtool \
-    pkg-config
+FROM alpine AS build
+RUN apk add --no-cache build-base automake autoconf
 
-WORKDIR /optima
-COPY . /optima
+WORKDIR /home/DevOpsLab3
 
-RUN autoreconf --install && ./configure && make
+COPY . .
+RUN autoreconf --install
+RUN ./configure
+RUN make
 
-EXPOSE 8081
-
-CMD ["./FuncCosh"]
+FROM alpine
+COPY --from=build /home/DevOpsLab3/FuncCosh /usr/local/bin/FuncCosh
+ENTRYPOINT ["/usr/local/bin/FuncCosh"]
