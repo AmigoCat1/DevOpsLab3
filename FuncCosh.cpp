@@ -4,7 +4,10 @@
 
 unsigned long long FuncCosh::factorial(int n) {
     unsigned long long result = 1;
-    for (int i = 2; i <= n; ++i) {
+    if (n > 20) { // Adjust the limit as needed
+        throw std::runtime_error("Factorial overflow"); 
+    }
+    for (int i = 1; i <= n; ++i) {
         result *= i;
     }
     return result;
