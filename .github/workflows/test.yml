@@ -27,10 +27,9 @@ jobs:
           make check
       
       - name: Test logs uload
-        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs
+          name: test-suite
           path: test-suite.log
       	   
       - name: Log in Dockerhub.com
