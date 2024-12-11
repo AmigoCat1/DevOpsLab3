@@ -3,6 +3,4 @@
 
 int calculateTime();
 
-#endif
-
-
+#endif // CALCULATETIME_H

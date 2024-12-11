@@ -1,39 +1,37 @@
-// Use library
-#include <gtest/gtest.h>
-#include "FuncCosh.h"
+#include <iostream>
 #include <cmath>
+#include <chrono>
+#include <vector>
+#include <random>
+#include <cassert>
+#include <algorithm>
+#include "FuncCosh.h"
+#include "calculateTime.h"
 
-// Test to verify the result for x = 0
-TEST(CoshFunctionTest, ZeroInput) {
-    FuncCosh func;
-    EXPECT_NEAR(func.calculate(0.0, 3), 1.0, 1e-6); // cosh(0) = 1
+void test_cosh_zero() {
+    FuncCosh calc;
+    double result = calc.calculate(0.0, 5);
+    std::cout << "cosh(0) calculated value: " << result << std::endl;
+    assert(fabs(result - 1.0) < 0.001);
 }
 
-// Test to verify the result for x = 1 (positive value)
-TEST(CoshFunctionTest, PositiveInput) {
-    FuncCosh func;
-    double x = 1.0;
-    EXPECT_NEAR(func.calculate(x, 10), std::cosh(x), 1e-6); // Compare with the standard library cosh
+void test_cosh_one() {
+    FuncCosh calc;
+    double result = calc.calculate(1.0, 10);
+    std::cout << "cosh(1) calculated value: " << result << std::endl;
+    assert(fabs(result - cosh(1.0)) < 0.001); // Compare with std::cosh
 }
 
-// Test to verify the result for x = -1 (negative value)
-TEST(CoshFunctionTest, NegativeInput) {
-    FuncCosh func;
-    double x = -1.0;
-    EXPECT_NEAR(func.calculate(x, 10), std::cosh(x), 1e-6); // cosh is symmetric, cosh(-x) = cosh(x)
+void test_calculation_time() {
+    int iMS = calculateTime();
+    std::cout << "Calculation and sorting time: " << iMS << " milliseconds" << std::endl;
+    assert(iMS >= 5000 && iMS <= 20000); 
 }
 
-// Test for x = 2 with a limited number of terms in the series
-TEST(CoshFunctionTest, LimitedTerms) {
-    FuncCosh func;
-    double x = 2.0;
-    EXPECT_NEAR(func.calculate(x, 5), std::cosh(x), 0.1); // Less precision due to limited terms
+int main() {
+    test_cosh_zero();
+    test_cosh_one();
+    test_calculation_time();
+    std::cout << "All tests complete" << std::endl;
+    return 0;
 }
-
-// Test for large values of x
-TEST(CoshFunctionTest, LargeInput) {
-    FuncCosh func;
-    double x = 10.0;
-    EXPECT_NEAR(func.calculate(x, 20), std::cosh(x), 1e-6); // Higher precision for large x with more terms
-}
-

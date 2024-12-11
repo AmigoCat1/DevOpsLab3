@@ -16,7 +16,7 @@ jobs:
       - name: Install build tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake g++ libgtest-dev libtool
+          sudo apt-get install -y autoconf automake g++ libboost-test-dev
 
       - name: Generate configuration and build
         run: |

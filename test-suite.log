@@ -1,0 +1,23 @@
+======================================
+   DevOpsLab3 1.0: ./test-suite.log
+======================================
+
+# TOTAL: 1
+# PASS:  0
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+
+.. contents:: :depth: 2
+
+FAIL: test_func_cosh
+====================
+
+cosh(0) calculated value: 1
+cosh(1) calculated value: 1.54308
+Calculation and sorting time: 20237 milliseconds
+test_func_cosh: UnitTest.cpp:28: void test_calculation_time(): Assertion `iMS >= 5000 && iMS <= 20000' failed.
+FAIL test_func_cosh (exit status: 134)
+

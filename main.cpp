@@ -4,17 +4,16 @@
 int CreateHTTPserver();
 
 int main() {
-	FuncCosh func;
-        double x;
-        int terms;
-	// Input x and terms
-	std::cout << "Enter the value of x: ";
-	std::cin >> x;
-	std::cout << "Enter the number of terms: ";
-	std::cin >> terms;
-	// Output result
-	std::cout << "ch(" << x << ") = " << func.calculate(x, terms) << std::endl;
-	std::cout << "Start HTTP server" << std::endl;
-    	CreateHTTPserver();
-	return 0;
+    FuncCosh func;
+    double x;
+    int n;
+
+    std::cout << "Enter x and n: ";
+    std::cin >> x >> n;
+
+    std::cout << "Result function FuncCosh: " << func.calculate(x, n) << std::endl;
+    std::cout << "Start HTTP server" << std::endl;
+    CreateHTTPserver();
+
+    return 0;
 }
