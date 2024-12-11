@@ -25,13 +25,13 @@ jobs:
       - name: Run test
         run: |
           make check
-      
-      - name: Test logs uload
+       
+      - name: Test log upload
         uses: actions/upload-artifact@v4
         with:
-          name: test-suite
+          name: test-logs
           path: test-suite.log
-      	   
+          
       - name: Log in Dockerhub.com
         run: |
           docker login -u ${{ vars.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
