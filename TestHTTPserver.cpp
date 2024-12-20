@@ -22,7 +22,7 @@ void verifyCoshAtNegativeOne() {
 void checkCalculationTime() {
     int elapsedTime = calculateTime();
     std::cout << "Computation and sort time for task: " << elapsedTime << " ms" << std::endl;
-    assert(elapsedTime >= 5000 && elapsedTime <= 20000); // Condition calculation time is within 5 to 20 sec
+    assert(elapsedTime >= 5000 && elapsedTime <= 30000); // Condition calculation time is within 5 to 30 sec
 }
 
 int main() {

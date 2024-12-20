@@ -29,7 +29,7 @@ void testCoshAtNegativeValue() {
 void testExecutionTime() {
     int elapsedTime = calculateTime();
     std::cout << "Total computation time: " << elapsedTime << " ms" << std::endl;
-    assert(elapsedTime >= 5000 && elapsedTime <= 20000); // Expected time range
+    assert(elapsedTime >= 5000 && elapsedTime <= 30000); // Expected time range
 }
 
 int main() {

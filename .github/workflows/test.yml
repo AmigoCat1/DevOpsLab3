@@ -2,9 +2,9 @@ name: Work with Docker
 
 on:
   push:
-    branches: [branchHTTPservMutli]
+    branches: [branchMKRVertical]
   pull_request:
-    branches: [branchHTTPservMutli]
+    branches: [branchMKRVertical]
 
 jobs:
   build:
@@ -19,7 +19,9 @@ jobs:
       - name: Generate configuration 
         run: |
           autoreconf --install
-          
+          ./configure
+          make
+       
       - name: Install Dependencies (QEMU)
         uses: docker/setup-qemu-action@v3
           
@@ -34,14 +36,14 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
           
       - name: Build, create Dockerfile image for amd64 vers
-        run: docker build --platform=linux/amd64 -t amigocatandrey/optimaserver:amd64 --push .
+        run: docker build --platform=linux/amd64 -t amigocatandrey/optimaservers1:amd64 --push .
         
       - name: Build, create Dockerfile image for arm64 vers
-        run: docker build --platform=linux/arm64 -t amigocatandrey/optimaserver:arm64 --push .
+        run: docker build --platform=linux/arm64 -t amigocatandrey/optimaservers1:arm64 --push .
           
       - name: Create manifest
-        run: docker manifest create amigocatandrey/optimaserver --amend amigocatandrey/optimaserver:amd64 --amend amigocatandrey/optimaserver:arm64
+        run: docker manifest create amigocatandrey/optimaservers1 --amend amigocatandrey/optimaservers1:amd64 --amend amigocatandrey/optimaservers1:arm64
           
       - name: Push manifest
         run: |
-          docker manifest push amigocatandrey/optimaserver        
+          docker manifest push amigocatandrey/optimaservers1        
