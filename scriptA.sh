@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Log file to store script activities
+# Logs file to store script activities
 LOGFILE="MonitorScriptA.log"
 
 # Docker image to use
